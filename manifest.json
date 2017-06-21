@@ -1,0 +1,36 @@
+{
+  "update_url": "https://clients2.google.com/service/update2/crx",
+  "name": "Framgia Education Pull Request Tracking Feed",
+  "short_name": "PRTS",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "description": "Getting latest pull request state from Education System",
+  "content_scripts": [],
+  "web_accessible_resources": [
+    "images/logo.png"
+  ],
+  "browser_action": {
+    "default_icon": "images/icon64.png",
+    "default_popup": "html/popup.html"
+  },
+  "permissions": [
+    "tabs",
+    "storage",
+    "notifications",
+    "<all_urls>",
+    "https://prts.herokuapp.com/",
+    "http://localhost:3000/"
+  ],
+  "omnibox": {
+    "keyword": "pullrequest"
+  },
+  "icons": {
+    "64": "images/icon64.png"
+  },
+  "background": {
+    "scripts": [
+      "js/extensions/background.js"
+    ]
+  },
+  "homepage_url": "https://prts.herokuapp.com"
+}
