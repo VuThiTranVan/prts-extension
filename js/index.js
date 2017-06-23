@@ -2,25 +2,36 @@
 
 document.addEventListener("DOMContentLoaded", function(event) {
   var PRTS_URL = 'https://prts.herokuapp.com/';
+  // var PRTS_URL = 'http://localhost:3000/';
   var FEED_URL = PRTS_URL + 'api/extensions/feeds.json';
   var ACCOUNT_URL = PRTS_URL + 'api/extensions/accounts.json';
 
-  var httpRequest = new XMLHttpRequest();
-  httpRequest.onreadystatechange = attachContents;
-  httpRequest.open('GET', FEED_URL);
-  httpRequest.send();
+  function loadFeedData() {
+    var notification = $('.notification.mb-0');
+    var loader = $('.spin-loader');
 
-  function attachContents() {
-    if (httpRequest.readyState === XMLHttpRequest.DONE) {
-      var feedWraper =  $('.feed-wrapper')
+    $.ajax({
+      url: FEED_URL,
+      type: 'GET',
+      dataType: 'json',
+      beforeSend: function() {
 
-      if (httpRequest.status === 200) {
-        var jsonData = JSON.parse(httpRequest.responseText);
-        feedWraper.html(jsonData['content']);
+      },
+      complete: function() {
+
+      },
+      success: function(result) {
+        var feedWraper = $('.feed-wrapper');
+        feedWraper.html(result.content);
         feedWraper.removeClass('is-hidden');
-        $('.notification.mb-0').addClass('is-hidden');
+        notification.addClass('is-hidden');
+        loader.addClass('is-hidden');
+      },
+      error: function(error) {
+        notification.removeClass('is-hidden');
+        loader.addClass('is-hidden');
       }
-    }
+    });
   }
 
   function handleSetting() {
@@ -37,12 +48,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
       type: 'GET',
       dataType: 'json',
       headers: {'OAUTH_TOKEN': token},
-      success: function (result) {
+      success: function(result) {
         localStorage.setItem('oauthTokenVal', token);
         $('.not-sign-in').addClass('is-hidden');
         $('.signed-in').removeClass('is-hidden');
       },
-      error: function (error) {
+      error: function(error) {
         $('.help.is-danger').html('Cannot log in with the provided API key. Please review your API key. Click "Show guides" below if you need help.');
         $('.help.is-danger').delay(2000, function(){
           $(this).html();
@@ -51,6 +62,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     });
   }
 
+  loadFeedData();
   handleSetting();
 
   $(document).on('click', 'button.save-oauth-token', function(e) {
