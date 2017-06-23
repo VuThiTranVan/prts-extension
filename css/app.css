@@ -3165,7 +3165,8 @@ a.box:active {
   flex-grow: 1;
   -ms-flex-negative: 1;
   flex-shrink: 1;
-  text-align: left
+  text-align: left;
+  max-width: 314px;
 }
 
 .media {

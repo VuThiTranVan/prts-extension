@@ -31,6 +31,59 @@
           </div>
         </a>
         <div class="content-wrapper">
+          <div class="navigation">
+            <div class="tabs is-toggle is-fullwidth">
+              <ul>
+                <li class="tab is-active active">
+                  <a href="#feeds" role="tab" data-toggle="tab">
+                    Newest Pull Requests
+                  </a>
+                </li>
+                <li class="tab">
+                  <a href="#settings" role="tab" data-toggle="tab">
+                    Settings
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="tabs-details tab-content">
+              <div id="feeds" class="tab-pane active">
+                <div>
+                  <div class="feed-wrapper is-hidden">
+                  </div>
+                  <div class="notification mb-0">
+                    There are no new pull requests.
+                  </div>
+                  <div class="has-text-centered">
+                    <a href="https://prts.herokuapp.com/" target="__blank" class="button is-primary" style="margin: 5px; padding: 15px;">See More</a>
+                  </div>
+                </div>
+              </div>
+              <div id="settings" class="tab-pane">
+                <div>
+                  <section class="section signed-in is-hidden">
+                    <button class="button is-danger">Logout</button>
+                    <div class="notification is-warning small-text mt-05">
+                      After logging out, you will no longer update trainee's pull request!!!
+                    </div>
+                  </section>
+                  <section class="section not-sign-in">
+                    <form>
+                      <div class="control">
+                        <label for="oauth-token" class="label">API Token</label>
+                        <input type="password" id="oauth-token" name="oauth-token" placeholder="Paste your private API token here..." required="required" class="input">
+                        <span class="help is-danger"></span>
+                        <span class="help is-info"><a href="#">Show Guides</a></span>
+                      </div>
+                      <div class="control">
+                        <button class="button is-primary save-oauth-token">Login</button>
+                      </div>
+                    </form>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
