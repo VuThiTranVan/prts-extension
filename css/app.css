@@ -6606,12 +6606,8 @@ a.panel-block:hover,label.panel-block:hover {
 
 .feed-wrapper {
   padding: 0;
-  overflow-y: hidden;
+  overflow-y: auto;
   max-height: 315px
-}
-
-.feed-wrapper:hover {
-  overflow-y: scroll;
 }
 
 .feed-wrapper .media {
@@ -6813,4 +6809,7 @@ a.panel-block:hover,label.panel-block:hover {
 
 ::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, .2);
+}
+#app .hero {
+  height: 80px;
 }
