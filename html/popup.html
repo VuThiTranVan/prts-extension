@@ -18,38 +18,63 @@
   <body>
     <div id="wrapper" class="container">
       <div id="app">
-        <a href="https://prts.herokuapp.com" tabindex="-1" target="_blank">
-          <div class="hero">
-            <div class="hero-body">
-              <div class="container">
-                <div>
-                  <h2 class="title">Pull Request Tracking</h2>
-                  <h3 class="subtitle">Free service for trainee member.</h3>
-                </div>
+        <div class="hero">
+          <div class="hero-body">
+            <div class="container">
+              <div>
+                <h2 class="title">Pull Request Tracking</h2>
+                <h3 class="subtitle">Framgia Education service for trainer</h3>
               </div>
             </div>
           </div>
-        </a>
+        </div>
         <div class="content-wrapper">
-          <div class="navigation">
+          <div class="settings">
+            <div>
+              <section class="signed-in is-hidden">
+                <button class="button is-danger">Logout</button>
+                <div class="notification is-warning small-text mt-05">
+                  After logging out, you will no longer update trainee's pull request!!!
+                </div>
+              </section>
+              <section class="not-sign-in">
+                <form>
+                  <div class="control">
+                    <label for="oauth-token" class="label">API Token</label>
+                    <input type="password" id="oauth-token" name="oauth-token" placeholder="Paste your private API token here..." required="required" class="input">
+                    <span class="help is-danger" style="display: none;">
+                      Cannot log in with the provided API key. Please review your API key.
+                      <!-- Click "Show guides" below if you need help. -->
+                    </span>
+                    <!-- <span class="help is-info"><a href="#">Show Guides</a></span> -->
+                  </div>
+                  <div class="control">
+                    <button class="button is-primary save-oauth-token">Login</button>
+                  </div>
+                </form>
+              </section>
+            </div>
+          </div>
+
+          <div class="navigation feeds is-hidden">
             <div class="tabs is-toggle is-fullwidth">
               <ul>
                 <li class="tab is-active active">
-                  <a href="#feeds" role="tab" data-toggle="tab">
-                    Newest Pull Requests
+                  <a href="#feeds-ready" data-status="ready" role="tab" data-toggle="tab">
+                    Ready Pulls
                   </a>
                 </li>
                 <li class="tab">
-                  <a href="#settings" role="tab" data-toggle="tab">
-                    Settings
+                  <a href="#feeds-commented" data-status="commented" role="tab" data-toggle="tab">
+                    Commented Pulls
                   </a>
                 </li>
               </ul>
             </div>
             <div class="tabs-details tab-content">
-              <div id="feeds" class="tab-pane active">
+              <div id="feeds-ready" class="tab-pane active">
                 <div>
-                  <div class="feed-wrapper is-hidden">
+                  <div class="feed-wrapper pr-ready is-hidden">
                   </div>
                   <div class="notification mb-0 is-hidden">
                     There are no new pull requests.
@@ -60,27 +85,17 @@
                   </div>
                 </div>
               </div>
-              <div id="settings" class="tab-pane">
+              <div id="feeds-commented" class="tab-pane">
                 <div>
-                  <section class="section signed-in is-hidden">
-                    <button class="button is-danger">Logout</button>
-                    <div class="notification is-warning small-text mt-05">
-                      After logging out, you will no longer update trainee's pull request!!!
-                    </div>
-                  </section>
-                  <section class="section not-sign-in">
-                    <form>
-                      <div class="control">
-                        <label for="oauth-token" class="label">API Token</label>
-                        <input type="password" id="oauth-token" name="oauth-token" placeholder="Paste your private API token here..." required="required" class="input">
-                        <span class="help is-danger"></span>
-                        <span class="help is-info"><a href="#">Show Guides</a></span>
-                      </div>
-                      <div class="control">
-                        <button class="button is-primary save-oauth-token">Login</button>
-                      </div>
-                    </form>
-                  </section>
+                  <div class="feed-wrapper pr-commented is-hidden">
+                  </div>
+                  <div class="notification mb-0 is-hidden">
+                    There are no new pull requests.
+                  </div>
+                  <div class="has-text-centered spin-loader"><i class="loader"></i></div>
+                  <div class="has-text-centered">
+                    <a href="https://prts.herokuapp.com/" target="__blank" class="button is-primary" style="margin: 5px; padding: 15px;">See More</a>
+                  </div>
                 </div>
               </div>
             </div>
