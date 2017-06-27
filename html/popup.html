@@ -65,6 +65,11 @@
                   </a>
                 </li>
                 <li class="tab">
+                  <a href="#feeds-reviewing" data-status="reviewing" role="tab" data-toggle="tab">
+                    Reviewing Pulls
+                  </a>
+                </li>
+                <li class="tab">
                   <a href="#feeds-commented" data-status="commented" role="tab" data-toggle="tab">
                     Commented Pulls
                   </a>
@@ -75,6 +80,19 @@
               <div id="feeds-ready" class="tab-pane active">
                 <div>
                   <div class="feed-wrapper pr-ready is-hidden">
+                  </div>
+                  <div class="notification mb-0 is-hidden">
+                    There are no new pull requests.
+                  </div>
+                  <div class="has-text-centered spin-loader"><i class="loader"></i></div>
+                  <div class="has-text-centered">
+                    <a href="https://prts.herokuapp.com/" target="__blank" class="button is-primary" style="margin: 5px; padding: 15px;">See More</a>
+                  </div>
+                </div>
+              </div>
+              <div id="feeds-reviewing" class="tab-pane">
+                <div>
+                  <div class="feed-wrapper pr-reviewing is-hidden">
                   </div>
                   <div class="notification mb-0 is-hidden">
                     There are no new pull requests.
