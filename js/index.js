@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     loadFeedData(status);
   });
 
-  $(document).on('click', '.pr', function(e) {
+  $(document).on('click', 'a.pr', function(e) {
     e.preventDefault();
     var location = $(this).attr('href');
     chrome.tabs.create({active: true, url: location});
