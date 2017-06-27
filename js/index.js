@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   });
 
   $(document).on('click', '#tabs a', function (e) {
-    e.preventDefault()
+    e.preventDefault();
     $(this).tab('show')
   });
 
@@ -109,7 +109,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     loadFeedData(status);
   });
 
-  $(document).on('click', 'a.pr', function(){
+  $(document).on('click', 'a.pr', function(e) {
+    e.preventDefault();
     location = $(this).data('href');
     chrome.tabs.create({active: true, url: location});
   });
@@ -124,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
       url: PULL_URL + pull_id + '.json',
       type: 'POST',
       dataType: 'json',
-      headers: {'OAUTH_TOKEN': apiKey},
+      headers: {'OAUTH_TOKEN': oauthToken},
       success: function(result) {
         chrome.tabs.create({active: true, url: location});
       },
