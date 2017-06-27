@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   $(document).on('click', '#tabs a', function (e) {
     e.preventDefault();
-    $(this).tab('show')
+    $(this).tab('show');
   });
 
   $(document).on('shown.bs.tab', 'a[data-toggle="tab"]', function (e) {
@@ -109,9 +109,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
     loadFeedData(status);
   });
 
-  $(document).on('click', 'a.pr', function(e) {
+  $(document).on('click', '.pr', function(e) {
     e.preventDefault();
-    location = $(this).data('href');
+    var location = $(this).attr('href');
     chrome.tabs.create({active: true, url: location});
   });
 
