@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
       url: FEED_URL + status + '.json',
       type: 'GET',
       dataType: 'json',
+      headers: {'OAUTH_TOKEN': oauthToken},
       success: function(result) {
         if(result.content.length > 1) {
           var feedWraper = $('.feed-wrapper.pr-' + status);
